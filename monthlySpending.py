@@ -1,7 +1,7 @@
 import pandas as pd
 
 col_names = ['Date','Description','Debit','Credit','Category']
-df = pd.read_csv("./Last_Month_July.csv", names=col_names,skiprows=6).drop(columns='Credit')
+df = pd.read_csv("../Personal_Finance/Last_Month_July.csv", names=col_names,skiprows=6).drop(columns='Credit')
 
 sum_of_categories = df.groupby(['Category'])['Debit'].sum().reset_index(name = "Total Amount")
 
