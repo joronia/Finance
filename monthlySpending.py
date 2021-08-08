@@ -25,6 +25,13 @@ amount_spent_in_month = {'Amount' : [total_spent_from_categories], 'Month_year' 
 
 amount_spent_in_month_df = pd.DataFrame(data=amount_spent_in_month)
 
+x_pos = [i for i, _ in enumerate(df2["Month_Year"].tolist())]
+energy = df2['amount'].tolist()
+plt.bar(df2["Month_Year"].tolist(), energy, color='green')
+plt.xlabel("Month")
+plt.ylabel("Dollar Amount ($)")
+plt.title("Expense per month")
+
 fig1, ax1 = plt.subplots()
 
 ax1.pie(percentage, labels=labels, autopct='%1.1f%%',
@@ -47,4 +54,4 @@ with open('../Personal_Finance/spent_by_month.csv', 'a') as f:
 amount_spent_in_month_df.to_csv('../Personal_Finance/spent_by_month.csv',mode='a', header=False)
 
 #Expenses_Breakdown_Chart.show()
-#plt.show()
+plt.show()
