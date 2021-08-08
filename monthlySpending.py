@@ -20,6 +20,10 @@ labels = sum_of_categories['Category'].tolist()
 
 percentage = sum_of_categories['Total_Monthly_Category_Percentage'].tolist()
 
+amount_spent_in_month = {'Amount' : [total_spent_from_categories], 'Month_year' : [sum_of_categories['Month_year'].iloc[0]]}
+
+amount_spent_in_month_df = pd.DataFrame(data=amount_spent_in_month)
+
 fig1, ax1 = plt.subplots()
 
 ax1.pie(percentage, labels=labels, autopct='%1.1f%%',
@@ -37,5 +41,9 @@ with open('../Personal_Finance/category_to_date.csv', 'a') as f:
     f.write('\n') 
 sum_of_categories.to_csv('../Personal_Finance/category_to_date.csv',mode='a', header=False)
 
-Expenses_Breakdown_Chart.show()
-plt.show()
+with open('../Personal_Finance/spent_by_month.csv', 'a') as f:
+    f.write('\n') 
+amount_spent_in_month_df.to_csv('../Personal_Finance/spent_by_month.csv',mode='a', header=False)
+
+#Expenses_Breakdown_Chart.show()
+#plt.show()
