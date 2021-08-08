@@ -3,8 +3,9 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 
 col_names = ['Date','Description','Debit','Credit','Category']
-df = pd.read_csv("../Personal_Finance/August_expense.csv", names=col_names,skiprows=6).drop(columns='Credit')
+df = pd.read_csv("../Personal_Finance/Last_Month_July.csv", names=col_names,skiprows=6).drop(columns='Credit')
 df1 = pd.read_csv("../Personal_Finance/category_to_date.csv")
+df2 = pd.read_csv("../Personal_Finance/spent_by_month.csv",names=["amount","Month_Year"])
 
 sum_of_categories = df.groupby(['Category'])['Debit'].sum().reset_index(name = "Total Amount")
 
