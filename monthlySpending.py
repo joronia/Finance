@@ -34,7 +34,8 @@ def writeDataToCSV():
         with open('../Personal_Finance/category_to_date.csv', 'a') as f:
           f.write('\n') 
           sum_of_categories.to_csv('../Personal_Finance/category_to_date.csv',mode='a', header=False)
-      df1 = pd.read_csv("../Personal_Finance/category_to_date.csv",names=["index","Category","Total Amount","Spent","Percentage","Month_year"]) 
+          df1 = pd.read_csv("../Personal_Finance/category_to_date.csv",names=["index","Category","Total Amount","Spent","Percentage","Month_year"])
+     
     else:
        with open('../Personal_Finance/category_to_date.csv', 'a') as f:
           f.write('\n') 
@@ -48,7 +49,8 @@ def writeDataToCSV():
         with open('../Personal_Finance/spent_by_month.csv', 'a') as f:
           f.write('\n') 
           amount_spent_in_month_df.to_csv('../Personal_Finance/spent_by_month.csv',mode='a', header=False)
-      df2 = pd.read_csv("../Personal_Finance/spent_by_month.csv",names=["amount","Month_Year"]) # We need to reread the file for new changes
+          df2 = pd.read_csv("../Personal_Finance/spent_by_month.csv",names=["amount","Month_Year"]) # We need to reread the file for new changes
+      
     else:
        with open('../Personal_Finance/spent_by_month.csv', 'a') as f:
           f.write('\n') 
