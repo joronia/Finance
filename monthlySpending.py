@@ -83,11 +83,11 @@ def writeDataToCSV():
 
 def showGraphs(labels,percentage,df1,df2,df3):
     
-    energy = df2['amount'].tolist()
+    energy = df2['amount'].abs().tolist()
     
     
     plt.bar(df2["Month_Year"].tolist(), energy, color='red')
-    plt.axhline(df2['amount'].mean(),color='purple',linewidth=2)
+    plt.axhline(df2['amount'].abs().mean(),color='purple',linewidth=2)
     plt.xlabel("Month")
     plt.ylabel("Dollar Amount ($)")
     plt.title("Expense per month")
@@ -109,7 +109,7 @@ def showGraphs(labels,percentage,df1,df2,df3):
     x = np.arange(len(df2["Month_Year"].tolist()))
     width = 0.35
 
-    rects1 = ax2.bar(x - width/2, df2['amount'].tolist(), width, label='Spent',color='red')
+    rects1 = ax2.bar(x - width/2, df2['amount'].abs().tolist(), width, label='Spent',color='red')
     rects2 = ax2.bar(x + width/2, df3['amount'].tolist(), width, label='Income',color='green')
 
 # Add some text for labels, title and custom x-axis tick labels, etc.
