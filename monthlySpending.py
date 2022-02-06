@@ -6,8 +6,8 @@ import os
 
 def writeDataToCSV():
     col_names = ['Date','Account','Description','Category','Tags','Amount']
-    df = pd.read_csv("../Finance/Last_Month_October.csv", names=col_names,skiprows=1).drop(columns='Tags')
-    income_df = pd.read_csv("../Finance/Last_Month_October.csv", names=['Date','Account','Description','Category','Tags','Amount'],skiprows=1).drop(columns='Tags')
+    df = pd.read_csv("../Finance/january_spending.csv", names=col_names,skiprows=1).drop(columns='Tags')
+    income_df = pd.read_csv("../Finance/january_spending.csv", names=['Date','Account','Description','Category','Tags','Amount'],skiprows=1).drop(columns='Tags')
     
     df1 = None
     df2 = None
@@ -34,50 +34,50 @@ def writeDataToCSV():
 
     amount_spent_in_month_df = pd.DataFrame(data=amount_spent_in_month)
 
-    if os.stat("../Finance/category_to_date.csv").st_size > 0:
-      df1 = pd.read_csv("../Finance/category_to_date.csv",names=["index","Category","Total Amount","Spent","Percentage","Month_year"],header=0)
+    if os.stat("../Finance/category_to_date_2022.csv").st_size > 0:
+      df1 = pd.read_csv("../Finance/category_to_date_2022.csv",names=["index","Category","Total Amount","Spent","Percentage","Month_year"],header=0)
       monthYearList = df1['Month_year'].tolist()
       if sum_of_categories['Month_year'].iloc[0] not in monthYearList:
-        with open('../Finance/category_to_date.csv', 'a') as f:
+        with open('../Finance/category_to_date_2022.csv', 'a') as f:
           f.write('\n') 
-          sum_of_categories.to_csv('../Finance/category_to_date.csv',mode='a', header=False)
-          df1 = pd.read_csv("../Finance/category_to_date.csv",names=["index","Category","Total Amount","Spent","Percentage","Month_year"],header=0)
+          sum_of_categories.to_csv('../Finance/category_to_date_2022.csv',mode='a', header=False)
+          df1 = pd.read_csv("../Finance/category_to_date_2022.csv",names=["index","Category","Total Amount","Spent","Percentage","Month_year"],header=0)
     else:
-       with open('../Finance/category_to_date.csv', 'a') as f:
+       with open('../Finance/category_to_date_2022.csv', 'a') as f:
           f.write('\n') 
-          sum_of_categories.to_csv('../Finance/category_to_date.csv',mode='a', header=False)
-          df1 = pd.read_csv("../Finance/category_to_date.csv",names=["index","Category","Total Amount","Spent","Percentage","Month_year"],header=0)
+          sum_of_categories.to_csv('../Finance/category_to_date_2022.csv',mode='a', header=False)
+          df1 = pd.read_csv("../Finance/category_to_date_2022.csv",names=["index","Category","Total Amount","Spent","Percentage","Month_year"],header=0)
     
-    if os.stat("../Finance/spent_by_month.csv").st_size > 0:
-      df2 = pd.read_csv("../Finance/spent_by_month.csv",names=["amount","Month_Year"],header=0)
+    if os.stat("../Finance/spent_by_month_2022.csv").st_size > 0:
+      df2 = pd.read_csv("../Finance/spent_by_month_2022.csv",names=["amount","Month_Year"],header=0)
       
       monthYearList = df2['Month_Year'].tolist()
       if sum_of_categories['Month_year'].iloc[0] not in monthYearList:
-        with open('../Finance/spent_by_month.csv', 'a') as f:
+        with open('../Finance/spent_by_month_2022.csv', 'a') as f:
           f.write('\n') 
-          amount_spent_in_month_df.to_csv('../Finance/spent_by_month.csv',mode='a', header=False,index=False)
-          df2 = pd.read_csv("../Finance/spent_by_month.csv",names=["amount","Month_Year"],header=0) # We need to reread the file for new changes
+          amount_spent_in_month_df.to_csv('../Finance/spent_by_month_2022.csv',mode='a', header=False,index=False)
+          df2 = pd.read_csv("../Finance/spent_by_month_2022.csv",names=["amount","Month_Year"],header=0) # We need to reread the file for new changes
     else:
-       with open('../Finance/spent_by_month.csv', 'a') as f:
+       with open('../Finance/spent_by_month_2022.csv', 'a') as f:
           f.write('\n')
-          amount_spent_in_month_df.to_csv('../Finance/spent_by_month.csv',mode='a', header=False,index=False)
-          df2 = pd.read_csv("../Finance/spent_by_month.csv",names=["amount","Month_Year"],header=0)
+          amount_spent_in_month_df.to_csv('../Finance/spent_by_month_2022.csv',mode='a', header=False,index=False)
+          df2 = pd.read_csv("../Finance/spent_by_month_2022.csv",names=["amount","Month_Year"],header=0)
     
-    if os.stat("../Finance/income_by_month.csv").st_size > 0:
-      df3 = pd.read_csv("../Finance/income_by_month.csv",names=['Month_Year','amount'],header=0)
+    if os.stat("../Finance/income_by_month_2022.csv").st_size > 0:
+      df3 = pd.read_csv("../Finance/income_by_month_2022.csv",names=['Month_Year','amount'],header=0)
       monthYearList = df3['Month_Year'].tolist()
       
       if sum_of_categories['Month_year'].iloc[0] not in monthYearList:
-        with open('../Finance/income_by_month.csv', 'a') as f:
+        with open('../Finance/income_by_month_2022.csv', 'a') as f:
           f.write('\n')
           
-          income_agg_df.to_csv('../Finance/income_by_month.csv',mode='a', header=False,index=False)
-          df3 = pd.read_csv("../Finance/income_by_month.csv",names=['Month_Year','amount'],header=0) # We need to reread the file for new changes
+          income_agg_df.to_csv('../Finance/income_by_month_2022.csv',mode='a', header=False,index=False)
+          df3 = pd.read_csv("../Finance/income_by_month_2022.csv",names=['Month_Year','amount'],header=0) # We need to reread the file for new changes
     else:
-       with open('../Finance/income_by_month.csv', 'a') as f:
+       with open('../Finance/income_by_month_2022.csv', 'a') as f:
           f.write('\n') 
-          income_agg_df.to_csv('../Finance/income_by_month.csv',mode='a', header=False,index=False)
-          df3 = pd.read_csv("../Finance/income_by_month.csv",names=['Month_Year','amount'],header=0)
+          income_agg_df.to_csv('../Finance/income_by_month_2022.csv',mode='a', header=False,index=False)
+          df3 = pd.read_csv("../Finance/income_by_month_2022.csv",names=['Month_Year','amount'],header=0)
 
     showGraphs(labels,percentage,df1,df2,df3)
 
